@@ -1,0 +1,35 @@
+{
+  "version": 2,
+  "framework": null,
+  "builds": [
+    {
+      "src": "api/index.php",
+      "use": "vercel-php@0.6.0"
+    },
+    {
+      "src": "public/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(css|js|images|fonts|storage)/(.*)",
+      "dest": "public/$1/$2"
+    },
+    {
+      "src": "/build/(.*)",
+      "dest": "public/build/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "api/index.php"
+    }
+  ],
+  "env": {
+    "APP_ENV": "production",
+    "APP_DEBUG": "false",
+    "APP_URL": "https://luswaafits.yourdomain.com",
+    "VERCEL": "1"
+  },
+  "regions": ["iad1"]
+}
